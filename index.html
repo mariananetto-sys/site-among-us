@@ -15,11 +15,13 @@
         }
 
         body {
-            background: #000000;
+            background: radial-gradient(ellipse at center, #1a0a2e 0%, #0d0015 50%, #000000 100%);
             color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
+            background-attachment: fixed;
         }
 
         /* Universo de estrelas suave */
@@ -41,6 +43,23 @@
             background-size: 200% 200%;
             opacity: 0.3;
             z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Nebulosa animada de fundo (NOVO - Global) */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(255, 0, 80, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(0, 200, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 30%, rgba(116, 204, 0, 0.05) 0%, transparent 35%);
+            animation: nebula 15s ease-in-out infinite;
+            z-index: -1;
             pointer-events: none;
         }
 
@@ -85,24 +104,12 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            background: radial-gradient(ellipse at center, #1a0a2e 0%, #0d0015 50%, #000000 100%);
+            background: transparent;
             overflow: hidden;
         }
 
-        /* Nebulosa animada de fundo */
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background:
-                radial-gradient(circle at 30% 40%, rgba(255, 0, 80, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 70% 60%, rgba(0, 200, 255, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 50% 30%, rgba(116, 204, 0, 0.1) 0%, transparent 35%);
-            animation: nebula 15s ease-in-out infinite;
-        }
+        /* Nebulosa animada de fundo (REMOVIDO DO HERO) */
+        /* .hero::before foi movido para body::after */
 
         @keyframes nebula {
 
@@ -1659,8 +1666,8 @@
                     </div>
                     <div class="credit-card">
                         <div class="credit-avatar">⚙️</div>
-                        <h3 class="credit-name">lucasnettocaire</h3>
-                        <p class="credit-role">Comandos</p>
+                        <h3 class="credit-name">Lucasnettocaire</h3>
+                        <p class="credit-role">COMANDOS e SITE</p>
                     </div>
                     <div class="credit-card">
                         <div class="credit-avatar">🗺️</div>
