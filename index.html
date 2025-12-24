@@ -444,46 +444,7 @@
             }
         }
 
-        .scroll-indicator {
-            position: absolute;
-            bottom: 40px;
-            font-size: 3rem;
-            color: #74cc00;
-            animation: bounce 2s infinite, pulseGlow 2s infinite;
-            cursor: pointer;
-            z-index: 999;
-            text-shadow: 0 0 20px rgba(116, 204, 0, 0.8);
-            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.5));
-            transition: transform 0.3s;
-        }
 
-        .scroll-indicator:hover {
-            transform: scale(1.2);
-        }
-
-        @keyframes bounce {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-        }
-
-        @keyframes pulseGlow {
-
-            0%,
-            100% {
-                text-shadow: 0 0 20px rgba(116, 204, 0, 0.8);
-            }
-
-            50% {
-                text-shadow: 0 0 40px rgba(116, 204, 0, 1), 0 0 60px rgba(116, 204, 0, 0.5);
-            }
-        }
 
         /* Container principal */
         .container {
@@ -1488,7 +1449,7 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator">↓</div>
+
     </div>
 
     <!-- Card de Conexão -->
@@ -1699,7 +1660,7 @@
                     <div class="credit-card">
                         <div class="credit-avatar">⚙️</div>
                         <h3 class="credit-name">lucasnettocaire</h3>
-                        <p class="credit-role">Comandos e Site</p>
+                        <p class="credit-role">Comandos</p>
                     </div>
                     <div class="credit-card">
                         <div class="credit-avatar">🗺️</div>
@@ -1791,13 +1752,7 @@
             });
         }
 
-        // Scroll suave ao clicar na seta
-        document.querySelector('.scroll-indicator').addEventListener('click', () => {
-            window.scrollTo({
-                top: window.innerHeight,
-                behavior: 'smooth'
-            });
-        });
+
     </script>
 </body>
 
