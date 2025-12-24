@@ -653,6 +653,45 @@
             transform: scale(0.95);
         }
 
+        /* Toast flutuante de cópia */
+        .copy-toast {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.9);
+            color: #74cc00;
+            border: 1px solid #74cc00;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            animation: toastFade 2s ease-out forwards;
+            white-space: nowrap;
+        }
+
+        @keyframes toastFade {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            10% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            80% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
         /* Seções */
         .section {
             margin: 80px 0;
@@ -1598,7 +1637,7 @@
                     <div class="connection-label">REDE Radmin VPN</div>
                     <div class="connection-value-wrapper">
                         <div class="connection-value">Server Among Us Original</div>
-                        <button class="copy-btn" onclick="copyText('Server Among Us Original')">
+                        <button class="copy-btn" onclick="copyText('Server Among Us Original', event)">
                             📋 Copiar
                         </button>
                     </div>
@@ -1611,7 +1650,7 @@
                         <div class="connection-label">IP DO SERVIDOR</div>
                         <div class="connection-value-wrapper">
                             <div class="connection-value">26.145.180.146</div>
-                            <button class="copy-btn" onclick="copyText('26.145.180.146')">
+                            <button class="copy-btn" onclick="copyText('26.145.180.146', event)">
                                 📋 Copiar IP
                             </button>
                         </div>
@@ -1622,7 +1661,7 @@
                         <div class="connection-label">PORTA</div>
                         <div class="connection-value-wrapper">
                             <div class="connection-value">25565</div>
-                            <button class="copy-btn" onclick="copyText('25565')">
+                            <button class="copy-btn" onclick="copyText('25565', event)">
                                 📋
                             </button>
                         </div>
@@ -1795,7 +1834,8 @@
                         <div class="contact-icon">📱</div>
                         <h3 class="contact-title">WhatsApp</h3>
                         <a href="https://wa.me/5511989394235" class="contact-link" target="_blank">+55 11 98939-4235</a>
-                        <button class="copy-btn" onclick="copyText('+55 11 98939-4235')">📋 Copiar</button>
+                        <button class="copy-btn" onclick="copyText('lorenzogamer1br@gmail.com', event)">📋
+                            Copiar</button>
                     </div>
                     <div class="contact-card">
                         <div class="contact-icon">📧</div>
@@ -1901,18 +1941,27 @@
             starsContainer.appendChild(star);
         }
 
-        // Função para copiar texto
-        function copyText(text) {
+        // Função para copiar texto com feedback visual próximo ao mouse
+        function copyText(text, event) {
             navigator.clipboard.writeText(text).then(() => {
-                const btn = event.target;
-                const originalText = btn.textContent;
-                btn.textContent = 'Copiado para a area de transferencia';
-                btn.style.background = '#74cc00';
-                btn.style.color = '#000';
+                // Criar elemento do toast
+                const toast = document.createElement('div');
+                toast.className = 'copy-toast';
+                toast.textContent = 'Copiado para a área de transferência!';
+
+                // Posicionar próximo ao clique
+                // Usamos clientX/Y para posição fixa na janela
+                const x = event.clientX;
+                const y = event.clientY;
+
+                toast.style.left = (x + 15) + 'px';
+                toast.style.top = (y - 15) + 'px';
+
+                document.body.appendChild(toast);
+
+                // Remover após a animação (2s)
                 setTimeout(() => {
-                    btn.textContent = originalText;
-                    btn.style.background = '#000';
-                    btn.style.color = '#74cc00';
+                    toast.remove();
                 }, 2000);
             });
         }
