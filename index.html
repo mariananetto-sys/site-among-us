@@ -1384,48 +1384,176 @@
         </div>
 
         <!-- Mini crewmates flutuantes -->
+        <!-- Mini crewmates flutuantes -->
         <div class="hero-crewmates">
+            <!-- RED (Base) -->
             <div class="mini-crewmate">
-                <svg width="60" height="72" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 35 75 L 35 65 Q 35 35 60 35 Q 85 35 85 65 L 85 115 Q 85 135 60 135 Q 35 135 35 115 Z"
-                        fill="#C51111" />
-                    <ellipse cx="48" cy="133" rx="10" ry="14" fill="#C51111" />
-                    <ellipse cx="72" cy="133" rx="10" ry="14" fill="#C51111" />
-                    <rect x="83" y="65" width="14" height="35" rx="7" fill="#8B0000" />
-                    <ellipse cx="58" cy="58" rx="22" ry="24" fill="#8DD7F7" />
+                <svg width="80" height="100" viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Mochila -->
+                    <path d="M 25 100 L 25 210 A 20 20 0 0 0 45 230 L 70 230 L 70 80 L 45 80 A 20 20 0 0 0 25 100 Z"
+                        fill="#C51111" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 80 L 70 260 A 20 20 0 0 0 90 280 L 110 280 A 20 20 0 0 0 130 260 L 130 230 L 170 230 L 170 260 A 20 20 0 0 0 190 280 L 210 280 A 20 20 0 0 0 230 260 L 230 80 A 80 70 0 0 0 70 80 Z"
+                        fill="#C51111" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra Corpo (Clip path fake) -->
+                    <path
+                        d="M 76 80 A 74 64 0 0 0 224 80 L 224 254 A 14 14 0 0 1 210 268 L 196 268 A 14 14 0 0 1 182 254 L 182 220 L 120 220 L 120 254 A 14 14 0 0 1 106 268 L 92 268 A 14 14 0 0 1 78 254 Z"
+                        fill="inset" stroke="none" style="fill: #7a0808; opacity: 0.2; mix-blend-mode: multiply;"
+                        transform="translate(10, 5) scale(0.9)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="110" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <!-- Reflexo Visor -->
+                    <ellipse cx="155" cy="100" rx="35" ry="15" fill="white" opacity="0.3" />
                 </svg>
             </div>
+
+            <!-- CYAN (Com chapéu de Ovo) -->
             <div class="mini-crewmate">
-                <svg width="50" height="60" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 35 75 L 35 65 Q 35 35 60 35 Q 85 35 85 65 L 85 115 Q 85 135 60 135 Q 35 135 35 115 Z"
-                        fill="#13EEF1" />
-                    <ellipse cx="48" cy="133" rx="10" ry="14" fill="#13EEF1" />
-                    <ellipse cx="72" cy="133" rx="10" ry="14" fill="#13EEF1" />
-                    <rect x="83" y="65" width="14" height="35" rx="7" fill="#0BA8AB" />
-                    <ellipse cx="58" cy="58" rx="22" ry="24" fill="#8DD7F7" />
+                <svg width="90" height="110" viewBox="0 0 240 330" xmlns="http://www.w3.org/2000/svg"
+                    style="overflow: visible;">
+                    <!-- Mochila -->
+                    <path d="M 25 130 L 25 240 A 20 20 0 0 0 45 260 L 70 260 L 70 110 L 45 110 A 20 20 0 0 0 25 130 Z"
+                        fill="#38FEDC" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 110 L 70 290 A 20 20 0 0 0 90 310 L 110 310 A 20 20 0 0 0 130 290 L 130 260 L 170 260 L 170 290 A 20 20 0 0 0 190 310 L 210 310 A 20 20 0 0 0 230 290 L 230 110 A 80 70 0 0 0 70 110 Z"
+                        fill="#38FEDC" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra -->
+                    <path
+                        d="M 76 110 A 74 64 0 0 0 224 110 L 224 284 A 14 14 0 0 1 210 298 L 196 298 A 14 14 0 0 1 182 284 L 182 250 L 120 250 L 120 284 A 14 14 0 0 1 106 298 L 92 298 A 14 14 0 0 1 78 284 Z"
+                        fill="#20a08a" opacity="0.3" transform="translate(5, 5)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="140" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="130" rx="35" ry="15" fill="white" opacity="0.4" />
+
+                    <!-- Chapéu: OVO -->
+                    <!-- Clara -->
+                    <path d="M 80 90 Q 80 40 150 40 Q 220 40 220 90" fill="white" stroke="black" stroke-width="12"
+                        stroke-linecap="round" />
+                    <path d="M 80 90 Q 80 40 150 40 Q 220 40 220 90" fill="white" /> <!-- Fill cover -->
+                    <!-- Gema -->
+                    <ellipse cx="150" cy="55" rx="25" ry="20" fill="#FFD700" stroke="black" stroke-width="8" />
+                    <ellipse cx="145" cy="50" rx="8" ry="5" fill="white" opacity="0.6" />
                 </svg>
             </div>
+
+            <!-- YELLOW (Com Coroa) -->
             <div class="mini-crewmate">
-                <svg width="55" height="66" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 35 75 L 35 65 Q 35 35 60 35 Q 85 35 85 65 L 85 115 Q 85 135 60 135 Q 35 135 35 115 Z"
-                        fill="#74cc00" />
-                    <ellipse cx="48" cy="133" rx="10" ry="14" fill="#74cc00" />
-                    <ellipse cx="72" cy="133" rx="10" ry="14" fill="#74cc00" />
-                    <rect x="83" y="65" width="14" height="35" rx="7" fill="#5aa000" />
-                    <ellipse cx="58" cy="58" rx="22" ry="24" fill="#8DD7F7" />
-                </svg>
-            </div>
-            <div class="mini-crewmate">
-                <svg width="45" height="54" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M 35 75 L 35 65 Q 35 35 60 35 Q 85 35 85 65 L 85 115 Q 85 135 60 135 Q 35 135 35 115 Z"
-                        fill="#F6F657" />
-                    <ellipse cx="48" cy="133" rx="10" ry="14" fill="#F6F657" />
-                    <ellipse cx="72" cy="133" rx="10" ry="14" fill="#F6F657" />
-                    <rect x="83" y="65" width="14" height="35" rx="7" fill="#C4C43E" />
-                    <ellipse cx="58" cy="58" rx="22" ry="24" fill="#8DD7F7" />
+                <svg width="85" height="105" viewBox="0 0 240 330" xmlns="http://www.w3.org/2000/svg"
+                    style="overflow: visible;">
+                    <!-- Mochila -->
+                    <path d="M 25 130 L 25 240 A 20 20 0 0 0 45 260 L 70 260 L 70 110 L 45 110 A 20 20 0 0 0 25 130 Z"
+                        fill="#F6F657" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 110 L 70 290 A 20 20 0 0 0 90 310 L 110 310 A 20 20 0 0 0 130 290 L 130 260 L 170 260 L 170 290 A 20 20 0 0 0 190 310 L 210 310 A 20 20 0 0 0 230 290 L 230 110 A 80 70 0 0 0 70 110 Z"
+                        fill="#F6F657" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra -->
+                    <path
+                        d="M 76 110 A 74 64 0 0 0 224 110 L 224 284 A 14 14 0 0 1 210 298 L 196 298 A 14 14 0 0 1 182 284 L 182 250 L 120 250 L 120 284 A 14 14 0 0 1 106 298 L 92 298 A 14 14 0 0 1 78 284 Z"
+                        fill="#C4C43E" opacity="0.4" transform="translate(5, 5)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="140" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="130" rx="35" ry="15" fill="white" opacity="0.4" />
+
+                    <!-- Chapéu: COROA -->
+                    <path d="M 90 80 L 90 40 L 120 60 L 150 20 L 180 60 L 210 40 L 210 80 L 90 80 Z" fill="#FFD700"
+                        stroke="black" stroke-width="10" stroke-linejoin="round" />
+                    <circle cx="90" cy="40" r="6" fill="#38FEDC" stroke="black" stroke-width="4" />
+                    <circle cx="150" cy="20" r="6" fill="#C51111" stroke="black" stroke-width="4" />
+                    <circle cx="210" cy="40" r="6" fill="#38FEDC" stroke="black" stroke-width="4" />
                 </svg>
             </div>
         </div>
+
+        <style>
+            /* Atualização das Animações dos Crewmates */
+            .hero-crewmates {
+                pointer-events: auto;
+                /* Permitir interação */
+            }
+
+            .mini-crewmate {
+                position: absolute;
+                filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                opacity: 1 !important;
+                /* Garantir visibilidade */
+                cursor: grab;
+            }
+
+            .mini-crewmate:hover {
+                transform: scale(1.1) rotate(10deg) !important;
+                filter: drop-shadow(0 15px 25px rgba(116, 204, 0, 0.4));
+                z-index: 100;
+            }
+
+            .mini-crewmate:active {
+                cursor: grabbing;
+                transform: scale(0.95);
+            }
+
+            /* Posicionamento Ajustado */
+            .mini-crewmate:nth-child(1) {
+                /* RED */
+                top: 15%;
+                left: 10%;
+                animation: crewmateFloat1 8s ease-in-out infinite;
+            }
+
+            .mini-crewmate:nth-child(2) {
+                /* CYAN */
+                top: 25%;
+                right: 12%;
+                animation: crewmateFloat2 9s ease-in-out infinite;
+                animation-delay: 1s;
+            }
+
+            .mini-crewmate:nth-child(3) {
+                /* YELLOW */
+                bottom: 20%;
+                left: 15%;
+                animation: crewmateFloat3 10s ease-in-out infinite;
+                animation-delay: 2s;
+            }
+
+            @keyframes crewmateFloat1 {
+
+                0%,
+                100% {
+                    transform: translateY(0) rotate(-5deg);
+                }
+
+                50% {
+                    transform: translateY(-20px) rotate(5deg);
+                }
+            }
+
+            @keyframes crewmateFloat2 {
+
+                0%,
+                100% {
+                    transform: translateY(0) rotate(5deg) scale(0.9);
+                }
+
+                50% {
+                    transform: translateY(-25px) rotate(-5deg) scale(0.9);
+                }
+            }
+
+            @keyframes crewmateFloat3 {
+
+                0%,
+                100% {
+                    transform: translateY(0) rotate(-3deg) scale(1.1);
+                }
+
+                50% {
+                    transform: translateY(-15px) rotate(3deg) scale(1.1);
+                }
+            }
+        </style>
 
         <div class="hero-content">
             <div class="title-wrapper">
@@ -1553,54 +1681,84 @@
 
         <!-- Characters -->
         <div class="characters">
+            <!-- RED (Base) -->
             <div class="character">
-                <svg width="150" height="180" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
-                    <!-- Sombra -->
-                    <ellipse cx="60" cy="142" rx="45" ry="10" fill="#000000" opacity="0.25" />
-                    <!-- Corpo principal -->
-                    <path d="M 35 75 L 35 65 Q 35 35 60 35 Q 85 35 85 65 L 85 115 Q 85 135 60 135 Q 35 135 35 115 Z"
-                        fill="#C51111" stroke="#8B0000" stroke-width="2" />
-                    <!-- Perna esquerda -->
-                    <ellipse cx="48" cy="133" rx="10" ry="14" fill="#C51111" stroke="#8B0000" stroke-width="1.5" />
-                    <!-- Perna direita -->
-                    <ellipse cx="72" cy="133" rx="10" ry="14" fill="#C51111" stroke="#8B0000" stroke-width="1.5" />
+                <svg width="150" height="180" viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Sombra Chão -->
+                    <ellipse cx="120" cy="280" rx="90" ry="20" fill="#000000" opacity="0.3" />
                     <!-- Mochila -->
-                    <rect x="83" y="65" width="14" height="35" rx="7" fill="#8B0000" stroke="#6B0000"
-                        stroke-width="1.5" />
-                    <!-- Visor externo -->
-                    <ellipse cx="58" cy="58" rx="22" ry="24" fill="#8DD7F7" stroke="#5BA7C7" stroke-width="2" />
-                    <!-- Visor interno (reflexo) -->
-                    <ellipse cx="62" cy="53" rx="10" ry="12" fill="#CCEEFF" opacity="0.7" />
-                    <!-- Brilho -->
-                    <ellipse cx="65" cy="50" rx="4" ry="5" fill="#FFFFFF" />
+                    <path d="M 25 100 L 25 210 A 20 20 0 0 0 45 230 L 70 230 L 70 80 L 45 80 A 20 20 0 0 0 25 100 Z"
+                        fill="#C51111" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 80 L 70 260 A 20 20 0 0 0 90 280 L 110 280 A 20 20 0 0 0 130 260 L 130 230 L 170 230 L 170 260 A 20 20 0 0 0 190 280 L 210 280 A 20 20 0 0 0 230 260 L 230 80 A 80 70 0 0 0 70 80 Z"
+                        fill="#C51111" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra Corpo -->
+                    <path
+                        d="M 76 80 A 74 64 0 0 0 224 80 L 224 254 A 14 14 0 0 1 210 268 L 196 268 A 14 14 0 0 1 182 254 L 182 220 L 120 220 L 120 254 A 14 14 0 0 1 106 268 L 92 268 A 14 14 0 0 1 78 254 Z"
+                        fill="inset" stroke="none" style="fill: #7a0808; opacity: 0.2; mix-blend-mode: multiply;"
+                        transform="translate(10, 5) scale(0.9)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="110" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="100" rx="35" ry="15" fill="white" opacity="0.3" />
                 </svg>
             </div>
+
+            <!-- CYAN (Com OVO) -->
             <div class="character">
-                <svg width="150" height="180" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="60" cy="142" rx="45" ry="10" fill="#000000" opacity="0.25" />
-                    <path d="M 35 75 L 35 65 Q 35 35 60 35 Q 85 35 85 65 L 85 115 Q 85 135 60 135 Q 35 135 35 115 Z"
-                        fill="#13EEF1" stroke="#0BA8AB" stroke-width="2" />
-                    <ellipse cx="48" cy="133" rx="10" ry="14" fill="#13EEF1" stroke="#0BA8AB" stroke-width="1.5" />
-                    <ellipse cx="72" cy="133" rx="10" ry="14" fill="#13EEF1" stroke="#0BA8AB" stroke-width="1.5" />
-                    <rect x="83" y="65" width="14" height="35" rx="7" fill="#0BA8AB" stroke="#097577"
-                        stroke-width="1.5" />
-                    <ellipse cx="58" cy="58" rx="22" ry="24" fill="#8DD7F7" stroke="#5BA7C7" stroke-width="2" />
-                    <ellipse cx="62" cy="53" rx="10" ry="12" fill="#CCEEFF" opacity="0.7" />
-                    <ellipse cx="65" cy="50" rx="4" ry="5" fill="#FFFFFF" />
+                <svg width="150" height="180" viewBox="0 0 240 330" xmlns="http://www.w3.org/2000/svg"
+                    style="overflow: visible;">
+                    <!-- Sombra Chão -->
+                    <ellipse cx="120" cy="310" rx="90" ry="20" fill="#000000" opacity="0.3" />
+                    <!-- Mochila -->
+                    <path d="M 25 130 L 25 240 A 20 20 0 0 0 45 260 L 70 260 L 70 110 L 45 110 A 20 20 0 0 0 25 130 Z"
+                        fill="#38FEDC" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 110 L 70 290 A 20 20 0 0 0 90 310 L 110 310 A 20 20 0 0 0 130 290 L 130 260 L 170 260 L 170 290 A 20 20 0 0 0 190 310 L 210 310 A 20 20 0 0 0 230 290 L 230 110 A 80 70 0 0 0 70 110 Z"
+                        fill="#38FEDC" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra -->
+                    <path
+                        d="M 76 110 A 74 64 0 0 0 224 110 L 224 284 A 14 14 0 0 1 210 298 L 196 298 A 14 14 0 0 1 182 284 L 182 250 L 120 250 L 120 284 A 14 14 0 0 1 106 298 L 92 298 A 14 14 0 0 1 78 284 Z"
+                        fill="#20a08a" opacity="0.3" transform="translate(5, 5)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="140" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="130" rx="35" ry="15" fill="white" opacity="0.4" />
+                    <!-- Chapéu OVO -->
+                    <path d="M 80 90 Q 80 40 150 40 Q 220 40 220 90" fill="white" stroke="black" stroke-width="12"
+                        stroke-linecap="round" />
+                    <path d="M 80 90 Q 80 40 150 40 Q 220 40 220 90" fill="white" />
+                    <ellipse cx="150" cy="55" rx="25" ry="20" fill="#FFD700" stroke="black" stroke-width="8" />
+                    <ellipse cx="145" cy="50" rx="8" ry="5" fill="white" opacity="0.6" />
                 </svg>
             </div>
+
+            <!-- YELLOW (Com COROA) -->
             <div class="character">
-                <svg width="150" height="180" viewBox="0 0 120 150" xmlns="http://www.w3.org/2000/svg">
-                    <ellipse cx="60" cy="142" rx="45" ry="10" fill="#000000" opacity="0.25" />
-                    <path d="M 35 75 L 35 65 Q 35 35 60 35 Q 85 35 85 65 L 85 115 Q 85 135 60 135 Q 35 135 35 115 Z"
-                        fill="#F6F657" stroke="#C4C43E" stroke-width="2" />
-                    <ellipse cx="48" cy="133" rx="10" ry="14" fill="#F6F657" stroke="#C4C43E" stroke-width="1.5" />
-                    <ellipse cx="72" cy="133" rx="10" ry="14" fill="#F6F657" stroke="#C4C43E" stroke-width="1.5" />
-                    <rect x="83" y="65" width="14" height="35" rx="7" fill="#C4C43E" stroke="#A0A030"
-                        stroke-width="1.5" />
-                    <ellipse cx="58" cy="58" rx="22" ry="24" fill="#8DD7F7" stroke="#5BA7C7" stroke-width="2" />
-                    <ellipse cx="62" cy="53" rx="10" ry="12" fill="#CCEEFF" opacity="0.7" />
-                    <ellipse cx="65" cy="50" rx="4" ry="5" fill="#FFFFFF" />
+                <svg width="150" height="180" viewBox="0 0 240 330" xmlns="http://www.w3.org/2000/svg"
+                    style="overflow: visible;">
+                    <!-- Sombra Chão -->
+                    <ellipse cx="120" cy="310" rx="90" ry="20" fill="#000000" opacity="0.3" />
+                    <!-- Mochila -->
+                    <path d="M 25 130 L 25 240 A 20 20 0 0 0 45 260 L 70 260 L 70 110 L 45 110 A 20 20 0 0 0 25 130 Z"
+                        fill="#F6F657" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 110 L 70 290 A 20 20 0 0 0 90 310 L 110 310 A 20 20 0 0 0 130 290 L 130 260 L 170 260 L 170 290 A 20 20 0 0 0 190 310 L 210 310 A 20 20 0 0 0 230 290 L 230 110 A 80 70 0 0 0 70 110 Z"
+                        fill="#F6F657" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra -->
+                    <path
+                        d="M 76 110 A 74 64 0 0 0 224 110 L 224 284 A 14 14 0 0 1 210 298 L 196 298 A 14 14 0 0 1 182 284 L 182 250 L 120 250 L 120 284 A 14 14 0 0 1 106 298 L 92 298 A 14 14 0 0 1 78 284 Z"
+                        fill="#C4C43E" opacity="0.4" transform="translate(5, 5)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="140" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="130" rx="35" ry="15" fill="white" opacity="0.4" />
+                    <!-- Chapéu COROA -->
+                    <path d="M 90 80 L 90 40 L 120 60 L 150 20 L 180 60 L 210 40 L 210 80 L 90 80 Z" fill="#FFD700"
+                        stroke="black" stroke-width="10" stroke-linejoin="round" />
+                    <circle cx="90" cy="40" r="6" fill="#38FEDC" stroke="black" stroke-width="4" />
+                    <circle cx="150" cy="20" r="6" fill="#C51111" stroke="black" stroke-width="4" />
+                    <circle cx="210" cy="40" r="6" fill="#38FEDC" stroke="black" stroke-width="4" />
                 </svg>
             </div>
         </div>
