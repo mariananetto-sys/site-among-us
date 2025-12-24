@@ -1834,15 +1834,14 @@
                         <div class="contact-icon">📱</div>
                         <h3 class="contact-title">WhatsApp</h3>
                         <a href="https://wa.me/5511989394235" class="contact-link" target="_blank">+55 11 98939-4235</a>
-                        <button class="copy-btn" onclick="copyText('lorenzogamer1br@gmail.com', event)">📋
-                            Copiar</button>
+                        <button class="copy-btn" onclick="copyText('+55 11 98939-4235', event)">📋 Copiar</button>
                     </div>
                     <div class="contact-card">
                         <div class="contact-icon">📧</div>
                         <h3 class="contact-title">E-mail</h3>
                         <a href="mailto:lorenzomacenabuzutti118@gmail.com"
                             class="contact-link">lorenzomacenabuzutti118@gmail.com</a>
-                        <button class="copy-btn" onclick="copyText('lorenzomacenabuzutti118@gmail.com')">📋
+                        <button class="copy-btn" onclick="copyText('lorenzomacenabuzutti118@gmail.com', event)">📋
                             Copiar</button>
                     </div>
                 </div>
@@ -1943,6 +1942,9 @@
 
         // Função para copiar texto com feedback visual próximo ao mouse
         function copyText(text, event) {
+            // Se o evento não for passado explicitamente, tenta pegar o global (fallback antigo)
+            if (!event) event = window.event;
+
             navigator.clipboard.writeText(text).then(() => {
                 // Criar elemento do toast
                 const toast = document.createElement('div');
