@@ -1,4 +1,1632 @@
-        <!-- Card de Conexão -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SERVIDOR AMONG US - O Melhor do Radmin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Russo+One&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: radial-gradient(ellipse at center, #1a0a2e 0%, #0d0015 50%, #000000 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
+
+        /* Universo de estrelas suave */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(1px 1px at 20% 30%, white, transparent),
+                radial-gradient(1px 1px at 60% 70%, white, transparent),
+                radial-gradient(1px 1px at 50% 50%, white, transparent),
+                radial-gradient(1px 1px at 80% 10%, white, transparent),
+                radial-gradient(1px 1px at 90% 60%, white, transparent),
+                radial-gradient(1px 1px at 33% 80%, white, transparent),
+                radial-gradient(1px 1px at 15% 90%, white, transparent);
+            background-size: 200% 200%;
+            opacity: 0.3;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Nebulosa animada de fundo (NOVO - Global) */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background:
+                radial-gradient(circle at 30% 40%, rgba(255, 0, 80, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 70% 60%, rgba(0, 200, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(circle at 50% 30%, rgba(116, 204, 0, 0.05) 0%, transparent 35%);
+            animation: nebula 15s ease-in-out infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Animação de estrelas */
+        @keyframes twinkle {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        /* Header Hero - REDESENHADO */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        /* Nebulosa animada de fundo (REMOVIDO DO HERO) */
+        /* .hero::before foi movido para body::after */
+
+        @keyframes nebula {
+
+            0%,
+            100% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            50% {
+                transform: rotate(10deg) scale(1.1);
+            }
+        }
+
+        /* Círculos decorativos flutuantes */
+        .floating-circles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            animation: floatCircle 8s ease-in-out infinite;
+        }
+
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+            top: 10%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(116, 204, 0, 0.15) 0%, transparent 70%);
+            top: 60%;
+            right: -3%;
+            animation-delay: 2s;
+        }
+
+        .circle-3 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(0, 200, 255, 0.1) 0%, transparent 70%);
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatCircle {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        /* Nova estrutura do título */
+        .title-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Badge superior animado */
+        .top-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.2) 0%, rgba(255, 0, 0, 0.4) 100%);
+            border: 2px solid #ff0000;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: badgePulse 3s ease-in-out infinite;
+            box-shadow:
+                0 0 20px rgba(255, 0, 0, 0.4),
+                inset 0 0 20px rgba(255, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .top-badge::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes badgePulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 0, 0, 0.4), inset 0 0 20px rgba(255, 0, 0, 0.1);
+            }
+
+            50% {
+                transform: scale(1.02);
+                box-shadow: 0 0 40px rgba(255, 0, 0, 0.6), inset 0 0 30px rgba(255, 0, 0, 0.2);
+            }
+        }
+
+        .badge-emoji {
+            font-size: 1.5rem;
+            animation: emojiFloat 2s ease-in-out infinite;
+        }
+
+        .badge-emoji:last-child {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes emojiFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-3px) rotate(5deg);
+            }
+        }
+
+        /* Título principal com estilo gaming épico */
+        .main-title {
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .title-accent {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.5rem;
+            color: #74cc00;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(116, 204, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .title-main {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(180deg, #ffffff 0%, #ff0000 50%, #8B0000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 5px;
+            line-height: 1.1;
+            filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.5));
+            animation: fadeInUp 1s ease-out 0.4s both, titleGlow 3s ease-in-out infinite;
+            position: relative;
+        }
+
+        .title-sub {
+            font-family: 'Russo One', sans-serif;
+            font-size: 2.5rem;
+            color: #ffffff;
+            letter-spacing: 10px;
+            text-shadow:
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 4px 0 #333;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes titleGlow {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 30px rgba(255, 0, 0, 0.5));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 50px rgba(255, 0, 0, 0.8));
+            }
+        }
+
+        /* Badges de features */
+        .feature-badges {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .feature-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, rgba(116, 204, 0, 0.15) 0%, rgba(116, 204, 0, 0.3) 100%);
+            border: 2px solid #74cc00;
+            padding: 15px 30px;
+            border-radius: 15px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: #74cc00;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow:
+                0 5px 20px rgba(116, 204, 0, 0.2),
+                inset 0 0 15px rgba(116, 204, 0, 0.1);
+        }
+
+        .feature-badge::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(116, 204, 0, 0.2) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .feature-badge:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow:
+                0 15px 40px rgba(116, 204, 0, 0.4),
+                inset 0 0 25px rgba(116, 204, 0, 0.2);
+            border-color: #8aff00;
+            color: #8aff00;
+        }
+
+        .feature-badge:hover::before {
+            opacity: 1;
+        }
+
+        .badge-icon {
+            font-size: 1.3rem;
+        }
+
+        /* Crewmates flutuantes */
+        .hero-crewmates {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .mini-crewmate {
+            position: absolute;
+            animation: crewmateFloat 6s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .mini-crewmate:nth-child(1) {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .mini-crewmate:nth-child(2) {
+            top: 25%;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        .mini-crewmate:nth-child(3) {
+            bottom: 25%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        .mini-crewmate:nth-child(4) {
+            bottom: 30%;
+            right: 8%;
+            animation-delay: 3s;
+        }
+
+        @keyframes crewmateFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(-5deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+
+
+        /* Container principal */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Card de conexão destacado */
+        .connection-card {
+            background: linear-gradient(135deg, #74cc00 0%, #5aa000 100%);
+            border-radius: 30px;
+            padding: 40px;
+            margin: -80px auto 60px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(116, 204, 0, 0.4);
+            transform: translateY(-50px);
+            position: relative;
+            z-index: 3;
+            animation: cardFloat 4s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .connection-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #74cc00, #fff, #74cc00, #fff);
+            border-radius: 32px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            background-size: 400% 400%;
+        }
+
+        @keyframes cardFloat {
+
+            0%,
+            100% {
+                transform: translateY(-50px);
+            }
+
+            50% {
+                transform: translateY(-60px);
+            }
+        }
+
+        @keyframes borderGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .connection-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(20, 20, 20, 0.9) 100%);
+            border: 1px solid rgba(116, 204, 0, 0.3);
+            border-radius: 30px;
+            padding: 50px;
+            margin: -80px auto 60px;
+            max-width: 900px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(116, 204, 0, 0.1),
+                inset 0 0 50px rgba(116, 204, 0, 0.05);
+            transform: translateY(-50px);
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+
+        .connection-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #74cc00, transparent);
+            animation: scanline 4s linear infinite;
+        }
+
+        @keyframes scanline {
+            0% {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        .connection-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .connection-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        .connection-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 20px 25px;
+            border-radius: 15px;
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .connection-item:hover {
+            background: rgba(116, 204, 0, 0.05);
+            border-color: rgba(116, 204, 0, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .connection-label {
+            font-size: 0.8rem;
+            color: #74cc00;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .connection-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(116, 204, 0, 0.3), transparent);
+        }
+
+        .connection-value-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .connection-value {
+            font-size: 1.5rem;
+            color: #fff;
+            font-weight: bold;
+            font-family: 'Orbitron', monospace;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(116, 204, 0, 0.3);
+        }
+
+        .copy-btn {
+            background: rgba(116, 204, 0, 0.1);
+            color: #74cc00;
+            border: 1px solid rgba(116, 204, 0, 0.3);
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+
+        .copy-btn:hover {
+            background: #74cc00;
+            color: #000;
+            box-shadow: 0 0 15px rgba(116, 204, 0, 0.4);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Toast flutuante de cópia */
+        .copy-toast {
+            position: fixed;
+            background: rgba(0, 0, 0, 0.9);
+            color: #74cc00;
+            border: 1px solid #74cc00;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            pointer-events: none;
+            z-index: 9999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            animation: toastFade 2s ease-out forwards;
+            white-space: nowrap;
+        }
+
+        @keyframes toastFade {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            10% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            80% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Seções */
+        .section {
+            margin: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #74cc00;
+            text-align: center;
+            margin-bottom: 50px;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(116, 204, 0, 0.5);
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 3px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #74cc00, transparent);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Grid de features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 2px solid rgba(116, 204, 0, 0.3);
+            border-radius: 20px;
+            padding: 35px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(116, 204, 0, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #74cc00;
+            box-shadow: 0 25px 50px rgba(116, 204, 0, 0.3),
+                inset 0 0 30px rgba(116, 204, 0, 0.05);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: iconFloat 3s ease-in-out infinite;
+            filter: drop-shadow(0 5px 15px rgba(116, 204, 0, 0.3));
+        }
+
+        .feature-card:nth-child(1) .feature-icon {
+            animation-delay: 0s;
+        }
+
+        .feature-card:nth-child(2) .feature-icon {
+            animation-delay: 0.2s;
+        }
+
+        .feature-card:nth-child(3) .feature-icon {
+            animation-delay: 0.4s;
+        }
+
+        .feature-card:nth-child(4) .feature-icon {
+            animation-delay: 0.6s;
+        }
+
+        .feature-card:nth-child(5) .feature-icon {
+            animation-delay: 0.8s;
+        }
+
+        .feature-card:nth-child(6) .feature-icon {
+            animation-delay: 1s;
+        }
+
+        @keyframes iconFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: #74cc00;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .feature-description {
+            color: #bbb;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* Seções de Dicas */
+        .tip-section {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tip-card {
+            background: linear-gradient(135deg, rgba(116, 204, 0, 0.1) 0%, rgba(0, 200, 255, 0.05) 100%);
+            border: 2px solid rgba(116, 204, 0, 0.4);
+            border-radius: 25px;
+            padding: 40px;
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tip-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #74cc00, #00c8ff, #74cc00);
+            background-size: 200% 100%;
+            animation: borderShine 3s linear infinite;
+        }
+
+        @keyframes borderShine {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(116, 204, 0, 0.2);
+            border-color: #74cc00;
+        }
+
+        .deduction-card {
+            background: linear-gradient(135deg, rgba(116, 204, 0, 0.15) 0%, rgba(116, 204, 0, 0.05) 100%);
+        }
+
+        .strategy-card {
+            background: linear-gradient(135deg, rgba(255, 200, 0, 0.1) 0%, rgba(255, 100, 0, 0.05) 100%);
+            border-color: rgba(255, 200, 0, 0.4);
+        }
+
+        .strategy-card::before {
+            background: linear-gradient(90deg, #ffc800, #ff6400, #ffc800);
+            background-size: 200% 100%;
+        }
+
+        .strategy-card:hover {
+            border-color: #ffc800;
+            box-shadow: 0 20px 50px rgba(255, 200, 0, 0.2);
+        }
+
+        .tip-icon {
+            font-size: 4rem;
+            flex-shrink: 0;
+            filter: drop-shadow(0 5px 15px rgba(116, 204, 0, 0.3));
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        .tip-content {
+            flex: 1;
+        }
+
+        .tip-content p {
+            color: #ddd;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tip-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .tip-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0 0;
+        }
+
+        .tip-list li {
+            color: #ccc;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(116, 204, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .tip-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tip-list li:hover {
+            color: #fff;
+            padding-left: 10px;
+            border-color: rgba(116, 204, 0, 0.3);
+        }
+
+        .tip-highlight {
+            background: linear-gradient(135deg, rgba(255, 200, 0, 0.1) 0%, transparent 100%);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #ffc800;
+        }
+
+        .impostor-text {
+            color: #ff4444;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(255, 68, 68, 0.5);
+        }
+
+        .crewmate-text {
+            color: #74cc00;
+            font-weight: bold;
+            text-shadow: 0 0 10px rgba(116, 204, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .tip-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .tip-icon {
+                font-size: 3rem;
+            }
+
+            .tip-list li {
+                text-align: left;
+            }
+        }
+
+        /* Sobre o projeto */
+        .about-section {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.15) 0%, rgba(116, 204, 0, 0.15) 100%);
+            border-radius: 30px;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(116, 204, 0, 0.3);
+        }
+
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff0000, #74cc00, #ff0000);
+            background-size: 200% 100%;
+            animation: borderShine 3s linear infinite;
+        }
+
+        .about-section::after {
+            content: '📖';
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 3rem;
+            opacity: 0.2;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ddd;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .about-text strong {
+            color: #74cc00;
+            text-shadow: 0 0 10px rgba(116, 204, 0, 0.3);
+        }
+
+        .creator-tag {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff0000, #ff4444, #ff0000);
+            background-size: 200% 100%;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', sans-serif;
+            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.4);
+            animation: tagPulse 3s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .creator-tag:hover {
+            transform: scale(1.05);
+        }
+
+        .creator-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes tagPulse {
+
+            0%,
+            100% {
+                box-shadow: 0 10px 40px rgba(255, 0, 0, 0.4);
+            }
+
+            50% {
+                box-shadow: 0 15px 50px rgba(255, 0, 0, 0.6);
+            }
+        }
+
+        /* Characters */
+        .characters {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+            padding: 40px 20px;
+        }
+
+        .character {
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .character::before {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 20px;
+            background: radial-gradient(ellipse, rgba(0, 0, 0, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: shadowPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes shadowPulse {
+
+            0%,
+            100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.4;
+            }
+
+            50% {
+                transform: translateX(-50%) scale(0.8);
+                opacity: 0.2;
+            }
+        }
+
+        .character:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .character:nth-child(2)::before {
+            animation-delay: 0.5s;
+        }
+
+        .character:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        .character:nth-child(3)::before {
+            animation-delay: 1s;
+        }
+
+        .character img {
+            width: 120px;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .character svg {
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .character:hover {
+            transform: scale(1.1);
+        }
+
+        .character:hover img,
+        .character:hover svg {
+            transform: rotate(10deg);
+            filter: drop-shadow(0 15px 35px rgba(116, 204, 0, 0.5));
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: linear-gradient(180deg, transparent 0%, rgba(116, 204, 0, 0.05) 50%, rgba(0, 0, 0, 0.5) 100%);
+            margin-top: 80px;
+            border-top: 1px solid rgba(116, 204, 0, 0.2);
+            position: relative;
+        }
+
+        .footer::before {
+            content: '🎮 AMONG US SERVER 🎮';
+            display: block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: #74cc00;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px rgba(116, 204, 0, 0.5);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: #888;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: #74cc00;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(116, 204, 0, 0.1) 0%, rgba(116, 204, 0, 0.05) 100%);
+            border: 2px solid #74cc00;
+            border-radius: 20px;
+            padding: 40px 30px;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(116, 204, 0, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-title {
+            color: #74cc00;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .contact-link {
+            display: block;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            word-break: break-all;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover {
+            color: #74cc00;
+        }
+
+        /* Credits Section */
+        .credits-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .credit-card {
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.15) 0%, rgba(116, 204, 0, 0.05) 100%);
+            border: 3px solid #ff0000;
+            border-radius: 25px;
+            padding: 45px 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .credit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .credit-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ff0000, #ff4444, #ff0000);
+            background-size: 200% 100%;
+            animation: borderGlow 3s linear infinite;
+        }
+
+        .credit-card:hover {
+            transform: translateY(-15px) scale(1.03);
+            border-color: #74cc00;
+            box-shadow: 0 25px 50px rgba(116, 204, 0, 0.4);
+        }
+
+        .credit-card:hover::before {
+            left: 100%;
+        }
+
+        .credit-card:hover::after {
+            background: linear-gradient(90deg, #74cc00, #8aff00, #74cc00);
+        }
+
+        .credit-avatar {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 8px 20px rgba(255, 0, 0, 0.5));
+            animation: avatarBounce 3s ease-in-out infinite;
+            display: inline-block;
+        }
+
+        @keyframes avatarBounce {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-10px) scale(1.05);
+            }
+        }
+
+        .credit-card:nth-child(1) .credit-avatar {
+            animation-delay: 0s;
+        }
+
+        .credit-card:nth-child(2) .credit-avatar {
+            animation-delay: 0.3s;
+        }
+
+        .credit-card:nth-child(3) .credit-avatar {
+            animation-delay: 0.6s;
+        }
+
+        .credit-name {
+            color: #fff;
+            font-size: 1.6rem;
+            margin-bottom: 12px;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+
+        .credit-role {
+            color: #74cc00;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-shadow: 0 0 15px rgba(116, 204, 0, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .top-badge {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+                letter-spacing: 2px;
+            }
+
+            .title-accent {
+                font-size: 1rem;
+                letter-spacing: 4px;
+            }
+
+            .title-main {
+                font-size: 2.8rem;
+                letter-spacing: 2px;
+            }
+
+            .title-sub {
+                font-size: 1.5rem;
+                letter-spacing: 5px;
+            }
+
+            .feature-badges {
+                gap: 10px;
+            }
+
+            .feature-badge {
+                font-size: 0.8rem;
+                padding: 10px 20px;
+            }
+
+            .mini-crewmate {
+                display: none;
+            }
+
+            .scroll-indicator {
+                font-size: 2.5rem;
+                bottom: 30px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .connection-card {
+                padding: 30px 20px;
+                margin-top: -60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Estrelas animadas -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <!-- Círculos decorativos -->
+        <div class="floating-circles">
+            <div class="circle circle-1"></div>
+            <div class="circle circle-2"></div>
+            <div class="circle circle-3"></div>
+        </div>
+
+        <!-- Mini crewmates flutuantes -->
+        <!-- Mini crewmates flutuantes -->
+        <div class="hero-crewmates">
+            <!-- RED (Base) -->
+            <div class="mini-crewmate">
+                <svg width="80" height="100" viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Mochila -->
+                    <path d="M 25 100 L 25 210 A 20 20 0 0 0 45 230 L 70 230 L 70 80 L 45 80 A 20 20 0 0 0 25 100 Z"
+                        fill="#C51111" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 80 L 70 260 A 20 20 0 0 0 90 280 L 110 280 A 20 20 0 0 0 130 260 L 130 230 L 170 230 L 170 260 A 20 20 0 0 0 190 280 L 210 280 A 20 20 0 0 0 230 260 L 230 80 A 80 70 0 0 0 70 80 Z"
+                        fill="#C51111" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra Corpo (Clip path fake) -->
+                    <path
+                        d="M 76 80 A 74 64 0 0 0 224 80 L 224 254 A 14 14 0 0 1 210 268 L 196 268 A 14 14 0 0 1 182 254 L 182 220 L 120 220 L 120 254 A 14 14 0 0 1 106 268 L 92 268 A 14 14 0 0 1 78 254 Z"
+                        fill="inset" stroke="none" style="fill: #7a0808; opacity: 0.2; mix-blend-mode: multiply;"
+                        transform="translate(10, 5) scale(0.9)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="110" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <!-- Reflexo Visor -->
+                    <ellipse cx="155" cy="100" rx="35" ry="15" fill="white" opacity="0.3" />
+                </svg>
+            </div>
+
+            <!-- CYAN (Com chapéu de Ovo) -->
+            <div class="mini-crewmate">
+                <svg width="90" height="110" viewBox="0 0 240 330" xmlns="http://www.w3.org/2000/svg"
+                    style="overflow: visible;">
+                    <!-- Mochila -->
+                    <path d="M 25 130 L 25 240 A 20 20 0 0 0 45 260 L 70 260 L 70 110 L 45 110 A 20 20 0 0 0 25 130 Z"
+                        fill="#38FEDC" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 110 L 70 290 A 20 20 0 0 0 90 310 L 110 310 A 20 20 0 0 0 130 290 L 130 260 L 170 260 L 170 290 A 20 20 0 0 0 190 310 L 210 310 A 20 20 0 0 0 230 290 L 230 110 A 80 70 0 0 0 70 110 Z"
+                        fill="#38FEDC" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra -->
+                    <path
+                        d="M 76 110 A 74 64 0 0 0 224 110 L 224 284 A 14 14 0 0 1 210 298 L 196 298 A 14 14 0 0 1 182 284 L 182 250 L 120 250 L 120 284 A 14 14 0 0 1 106 298 L 92 298 A 14 14 0 0 1 78 284 Z"
+                        fill="#20a08a" opacity="0.3" transform="translate(5, 5)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="140" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="130" rx="35" ry="15" fill="white" opacity="0.4" />
+
+                    <!-- Chapéu: OVO -->
+                    <!-- Clara -->
+                    <path d="M 80 90 Q 80 40 150 40 Q 220 40 220 90" fill="white" stroke="black" stroke-width="12"
+                        stroke-linecap="round" />
+                    <path d="M 80 90 Q 80 40 150 40 Q 220 40 220 90" fill="white" /> <!-- Fill cover -->
+                    <!-- Gema -->
+                    <ellipse cx="150" cy="55" rx="25" ry="20" fill="#FFD700" stroke="black" stroke-width="8" />
+                    <ellipse cx="145" cy="50" rx="8" ry="5" fill="white" opacity="0.6" />
+                </svg>
+            </div>
+
+            <!-- YELLOW (Com Coroa) -->
+            <div class="mini-crewmate">
+                <svg width="85" height="105" viewBox="0 0 240 330" xmlns="http://www.w3.org/2000/svg"
+                    style="overflow: visible;">
+                    <!-- Mochila -->
+                    <path d="M 25 130 L 25 240 A 20 20 0 0 0 45 260 L 70 260 L 70 110 L 45 110 A 20 20 0 0 0 25 130 Z"
+                        fill="#F6F657" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 110 L 70 290 A 20 20 0 0 0 90 310 L 110 310 A 20 20 0 0 0 130 290 L 130 260 L 170 260 L 170 290 A 20 20 0 0 0 190 310 L 210 310 A 20 20 0 0 0 230 290 L 230 110 A 80 70 0 0 0 70 110 Z"
+                        fill="#F6F657" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra -->
+                    <path
+                        d="M 76 110 A 74 64 0 0 0 224 110 L 224 284 A 14 14 0 0 1 210 298 L 196 298 A 14 14 0 0 1 182 284 L 182 250 L 120 250 L 120 284 A 14 14 0 0 1 106 298 L 92 298 A 14 14 0 0 1 78 284 Z"
+                        fill="#C4C43E" opacity="0.4" transform="translate(5, 5)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="140" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="130" rx="35" ry="15" fill="white" opacity="0.4" />
+
+                    <!-- Chapéu: COROA -->
+                    <path d="M 90 80 L 90 40 L 120 60 L 150 20 L 180 60 L 210 40 L 210 80 L 90 80 Z" fill="#FFD700"
+                        stroke="black" stroke-width="10" stroke-linejoin="round" />
+                    <circle cx="90" cy="40" r="6" fill="#38FEDC" stroke="black" stroke-width="4" />
+                    <circle cx="150" cy="20" r="6" fill="#C51111" stroke="black" stroke-width="4" />
+                    <circle cx="210" cy="40" r="6" fill="#38FEDC" stroke="black" stroke-width="4" />
+                </svg>
+            </div>
+        </div>
+
+        <style>
+            /* Atualização das Animações dos Crewmates */
+            .hero-crewmates {
+                pointer-events: auto;
+                /* Permitir interação */
+            }
+
+            .mini-crewmate {
+                position: absolute;
+                filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.5));
+                transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                opacity: 1 !important;
+                /* Garantir visibilidade */
+                cursor: grab;
+            }
+
+            .mini-crewmate:hover {
+                transform: scale(1.1) rotate(10deg) !important;
+                filter: drop-shadow(0 15px 25px rgba(116, 204, 0, 0.4));
+                z-index: 100;
+            }
+
+            .mini-crewmate:active {
+                cursor: grabbing;
+                transform: scale(0.95);
+            }
+
+            /* Posicionamento Ajustado */
+            .mini-crewmate:nth-child(1) {
+                /* RED */
+                top: 15%;
+                left: 10%;
+                animation: crewmateFloat1 8s ease-in-out infinite;
+            }
+
+            .mini-crewmate:nth-child(2) {
+                /* CYAN */
+                top: 25%;
+                right: 12%;
+                animation: crewmateFloat2 9s ease-in-out infinite;
+                animation-delay: 1s;
+            }
+
+            .mini-crewmate:nth-child(3) {
+                /* YELLOW */
+                bottom: 20%;
+                left: 15%;
+                animation: crewmateFloat3 10s ease-in-out infinite;
+                animation-delay: 2s;
+            }
+
+            @keyframes crewmateFloat1 {
+
+                0%,
+                100% {
+                    transform: translateY(0) rotate(-5deg);
+                }
+
+                50% {
+                    transform: translateY(-20px) rotate(5deg);
+                }
+            }
+
+            @keyframes crewmateFloat2 {
+
+                0%,
+                100% {
+                    transform: translateY(0) rotate(5deg) scale(0.9);
+                }
+
+                50% {
+                    transform: translateY(-25px) rotate(-5deg) scale(0.9);
+                }
+            }
+
+            @keyframes crewmateFloat3 {
+
+                0%,
+                100% {
+                    transform: translateY(0) rotate(-3deg) scale(1.1);
+                }
+
+                50% {
+                    transform: translateY(-15px) rotate(3deg) scale(1.1);
+                }
+            }
+        </style>
+
+        <div class="hero-content">
+            <div class="title-wrapper">
+                <!-- Badge superior com animação -->
+                <div class="top-badge">
+                    <span class="badge-emoji">🎮</span>
+                    <span>AMONG US SERVER</span>
+                    <span class="badge-emoji">🎮</span>
+                </div>
+
+                <!-- Título principal épico -->
+                <div class="main-title">
+                    <span class="title-accent">★ O MELHOR ★</span>
+                    <h1 class="title-main">SERVIDOR</h1>
+                    <span class="title-sub">DO RADMIN</span>
+                </div>
+
+                <!-- Badges de features -->
+                <div class="feature-badges">
+                    <div class="feature-badge">
+                        <span class="badge-icon">✓</span>
+                        <span>100% FIEL AO ORIGINAL</span>
+                    </div>
+                    <div class="feature-badge">
+                        <span class="badge-icon">⚡</span>
+                        <span>ZERO LAG</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Card de Conexão -->
     <div class="container">
         <div class="connection-card">
             <div class="connection-title">🎮 CONECTE-SE AGORA</div>
@@ -16,7 +1644,7 @@
                 </div>
 
                 <!-- SENHA -->
-                <div class="connection-item">
+                 <div class="connection-item">
                     <div class="connection-label">SENHA DA REDE</div>
                     <div class="connection-value-wrapper">
                         <div class="connection-value">Amongus</div>
@@ -52,3 +1680,302 @@
                 </div>
             </div>
         </div>
+
+        <!-- Features Section -->
+        <section class="section">
+            <h2 class="section-title">⭐ POR QUE SOMOS O MELHOR?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3 class="feature-title">Jogabilidade Autêntica</h3>
+                    <p class="feature-description">Experiência 100% fiel ao Among Us original com todas as mecânicas
+                        clássicas do jogo</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🚀</div>
+                    <h3 class="feature-title">Performance Superior</h3>
+                    <p class="feature-description">Servidor otimizado com zero lag, proporcionando gameplay ultra fluido
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3 class="feature-title">Comunidade Incrível</h3>
+                    <p class="feature-description">Junte-se a centenas de jogadores e faça novas amizades enquanto joga
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Suporte 24/7</h3>
+                    <p class="feature-description">Equipe sempre disponível para ajudar com qualquer problema ou dúvida
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3 class="feature-title">Sistema de Ranks</h3>
+                    <p class="feature-description">Suba de nível e conquiste badges exclusivos jogando no servidor</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3 class="feature-title">Chat de Voz</h3>
+                    <p class="feature-description">Comunicação em tempo real para deixar as partidas ainda mais
+                        emocionantes</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Characters -->
+        <div class="characters">
+            <!-- RED (Base) -->
+            <div class="character">
+                <svg width="150" height="180" viewBox="0 0 240 300" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Sombra Chão -->
+                    <ellipse cx="120" cy="280" rx="90" ry="20" fill="#000000" opacity="0.3" />
+                    <!-- Mochila -->
+                    <path d="M 25 100 L 25 210 A 20 20 0 0 0 45 230 L 70 230 L 70 80 L 45 80 A 20 20 0 0 0 25 100 Z"
+                        fill="#C51111" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 80 L 70 260 A 20 20 0 0 0 90 280 L 110 280 A 20 20 0 0 0 130 260 L 130 230 L 170 230 L 170 260 A 20 20 0 0 0 190 280 L 210 280 A 20 20 0 0 0 230 260 L 230 80 A 80 70 0 0 0 70 80 Z"
+                        fill="#C51111" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra Corpo -->
+                    <path
+                        d="M 76 80 A 74 64 0 0 0 224 80 L 224 254 A 14 14 0 0 1 210 268 L 196 268 A 14 14 0 0 1 182 254 L 182 220 L 120 220 L 120 254 A 14 14 0 0 1 106 268 L 92 268 A 14 14 0 0 1 78 254 Z"
+                        fill="inset" stroke="none" style="fill: #7a0808; opacity: 0.2; mix-blend-mode: multiply;"
+                        transform="translate(10, 5) scale(0.9)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="110" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="100" rx="35" ry="15" fill="white" opacity="0.3" />
+                </svg>
+            </div>
+
+            <!-- CYAN (Com OVO) -->
+            <div class="character">
+                <svg width="150" height="180" viewBox="0 0 240 330" xmlns="http://www.w3.org/2000/svg"
+                    style="overflow: visible;">
+                    <!-- Sombra Chão -->
+                    <ellipse cx="120" cy="310" rx="90" ry="20" fill="#000000" opacity="0.3" />
+                    <!-- Mochila -->
+                    <path d="M 25 130 L 25 240 A 20 20 0 0 0 45 260 L 70 260 L 70 110 L 45 110 A 20 20 0 0 0 25 130 Z"
+                        fill="#38FEDC" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 110 L 70 290 A 20 20 0 0 0 90 310 L 110 310 A 20 20 0 0 0 130 290 L 130 260 L 170 260 L 170 290 A 20 20 0 0 0 190 310 L 210 310 A 20 20 0 0 0 230 290 L 230 110 A 80 70 0 0 0 70 110 Z"
+                        fill="#38FEDC" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra -->
+                    <path
+                        d="M 76 110 A 74 64 0 0 0 224 110 L 224 284 A 14 14 0 0 1 210 298 L 196 298 A 14 14 0 0 1 182 284 L 182 250 L 120 250 L 120 284 A 14 14 0 0 1 106 298 L 92 298 A 14 14 0 0 1 78 284 Z"
+                        fill="#20a08a" opacity="0.3" transform="translate(5, 5)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="140" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="130" rx="35" ry="15" fill="white" opacity="0.4" />
+                    <!-- Chapéu OVO -->
+                    <path d="M 80 90 Q 80 40 150 40 Q 220 40 220 90" fill="white" stroke="black" stroke-width="12"
+                        stroke-linecap="round" />
+                    <path d="M 80 90 Q 80 40 150 40 Q 220 40 220 90" fill="white" />
+                    <ellipse cx="150" cy="55" rx="25" ry="20" fill="#FFD700" stroke="black" stroke-width="8" />
+                    <ellipse cx="145" cy="50" rx="8" ry="5" fill="white" opacity="0.6" />
+                </svg>
+            </div>
+
+            <!-- YELLOW (Com COROA) -->
+            <div class="character">
+                <svg width="150" height="180" viewBox="0 0 240 330" xmlns="http://www.w3.org/2000/svg"
+                    style="overflow: visible;">
+                    <!-- Sombra Chão -->
+                    <ellipse cx="120" cy="310" rx="90" ry="20" fill="#000000" opacity="0.3" />
+                    <!-- Mochila -->
+                    <path d="M 25 130 L 25 240 A 20 20 0 0 0 45 260 L 70 260 L 70 110 L 45 110 A 20 20 0 0 0 25 130 Z"
+                        fill="#F6F657" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Corpo -->
+                    <path
+                        d="M 70 110 L 70 290 A 20 20 0 0 0 90 310 L 110 310 A 20 20 0 0 0 130 290 L 130 260 L 170 260 L 170 290 A 20 20 0 0 0 190 310 L 210 310 A 20 20 0 0 0 230 290 L 230 110 A 80 70 0 0 0 70 110 Z"
+                        fill="#F6F657" stroke="black" stroke-width="12" stroke-linejoin="round" />
+                    <!-- Sombra -->
+                    <path
+                        d="M 76 110 A 74 64 0 0 0 224 110 L 224 284 A 14 14 0 0 1 210 298 L 196 298 A 14 14 0 0 1 182 284 L 182 250 L 120 250 L 120 284 A 14 14 0 0 1 106 298 L 92 298 A 14 14 0 0 1 78 284 Z"
+                        fill="#C4C43E" opacity="0.4" transform="translate(5, 5)" />
+                    <!-- Visor -->
+                    <ellipse cx="170" cy="140" rx="60" ry="35" fill="#8DD7F7" stroke="black" stroke-width="12" />
+                    <ellipse cx="155" cy="130" rx="35" ry="15" fill="white" opacity="0.4" />
+                    <!-- Chapéu COROA -->
+                    <path d="M 90 80 L 90 40 L 120 60 L 150 20 L 180 60 L 210 40 L 210 80 L 90 80 Z" fill="#FFD700"
+                        stroke="black" stroke-width="10" stroke-linejoin="round" />
+                    <circle cx="90" cy="40" r="6" fill="#38FEDC" stroke="black" stroke-width="4" />
+                    <circle cx="150" cy="20" r="6" fill="#C51111" stroke="black" stroke-width="4" />
+                    <circle cx="210" cy="40" r="6" fill="#38FEDC" stroke="black" stroke-width="4" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <section class="section">
+            <div class="about-section">
+                <h2 class="section-title">📖 SOBRE O PROJETO</h2>
+                <p class="about-text">
+                    Este projeto nasceu em <strong>23/12/2025</strong> com a visão de
+                    <strong>ElectroThunderBR</strong>.
+                    Nosso objetivo é criar <strong>o melhor servidor de Among Us do Radmin</strong>,
+                    trazendo de volta toda a nostalgia e diversão do jogo original.
+                    Com dedicação total e tecnologia de ponta, desenvolvemos um ambiente perfeito
+                    onde jogadores podem reviver os momentos mais épicos deste jogo lendário.
+                    Investimos constantemente em melhorias, otimizações e novos recursos
+                    para garantir que você tenha a experiência definitiva de Among Us!
+                </p>
+                <div class="creator-tag">
+                    👨‍💻 Criado por Lorenzogamer1BR
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="section">
+            <h2 class="section-title">📞 FALE CONOSCO</h2>
+            <div class="contact-section">
+                <p style="color: #ddd; font-size: 1.2rem; margin-bottom: 30px;">
+                    Precisa de ajuda ou quer tirar dúvidas? Entre em contato conosco!
+                </p>
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <h3 class="contact-title">WhatsApp</h3>
+                        <a href="https://wa.me/5511989394235" class="contact-link" target="_blank">+55 11 98939-4235</a>
+                        <button class="copy-btn" onclick="copyText('+55 11 98939-4235', event)">📋 Copiar</button>
+                    </div>
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <h3 class="contact-title">E-mail</h3>
+                        <a href="mailto:lorenzomacenabuzutti118@gmail.com"
+                            class="contact-link">lorenzomacenabuzutti118@gmail.com</a>
+                        <button class="copy-btn" onclick="copyText('lorenzomacenabuzutti118@gmail.com', event)">📋
+                            Copiar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Credits Section -->
+        <section class="section">
+            <h2 class="section-title">⭐ CRÉDITOS</h2>
+            <div class="credits-section">
+                <p style="color: #ddd; font-size: 1.2rem; margin-bottom: 40px;">
+                    Este projeto foi possível graças ao trabalho e dedicação de:
+                </p>
+                <div class="credits-grid">
+                    <div class="credit-card">
+                        <div class="credit-avatar">👑</div>
+                        <h3 class="credit-name">Lorenzogamer1BR</h3>
+                        <p class="credit-role">Criador do Servidor</p>
+                    </div>
+                    <div class="credit-card">
+                        <div class="credit-avatar">⚙️</div>
+                        <h3 class="credit-name">Lucasnettocaire</h3>
+                        <p class="credit-role">COMANDOS e SITE</p>
+                    </div>
+                    <div class="credit-card">
+                        <div class="credit-avatar">🗺️</div>
+                        <h3 class="credit-name">ElectroThunderBR</h3>
+                        <p class="credit-role">Mapa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Treino de Dedução -->
+        <section class="section">
+            <h2 class="section-title">🧠 TREINO DE DEDUÇÃO</h2>
+            <div class="tip-section">
+                <div class="tip-card deduction-card">
+                    <div class="tip-icon">🔍</div>
+                    <div class="tip-content">
+                        <p>No nosso servidor, a habilidade de <strong>observar e interpretar comportamentos</strong> é
+                            essencial.</p>
+                        <ul class="tip-list">
+                            <li>🎯 Treine sua dedução analisando cada ação dos jogadores durante as partidas.</li>
+                            <li>🎭 Aprenda a identificar padrões de comportamento suspeito e use o blefe a seu favor.
+                            </li>
+                            <li>🗣️ As reuniões e votações são momentos ideais para testar suas habilidades de persuasão
+                                e argumentação.</li>
+                            <li>📈 Quanto mais você pratica, melhor fica em detectar Impostores ou enganar os
+                                Tripulantes.</li>
+                            <li>👁️ Participe de várias partidas, observe atentamente e desenvolva sua estratégia.</li>
+                            <li>🏆 A prática constante garante partidas mais emocionantes e decisões mais certeiras.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO: Dica de Estratégia -->
+        <section class="section">
+            <h2 class="section-title">💡 DICA DE ESTRATÉGIA</h2>
+            <div class="tip-section">
+                <div class="tip-card strategy-card">
+                    <div class="tip-icon">🎮</div>
+                    <div class="tip-content">
+                        <p><strong>Observe o comportamento dos jogadores</strong> durante as partidas.</p>
+                        <p class="tip-highlight">Como o servidor é baseado em <strong>dedução social</strong>,
+                            <strong>blefe</strong> e <strong>votação</strong>, prestar atenção nas ações e nas falas
+                            durante as reuniões pode ser a diferença entre identificar um <span
+                                class="impostor-text">Impostor</span> ou eliminar um <span
+                                class="crewmate-text">Tripulante inocente</span>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p style="color: #888; font-size: 0.9rem;">© 2025 - Servidor Among Us - Todos os direitos reservados</p>
+        <p style="color: #666; font-size: 0.8rem; margin-top: 10px;">Among Us é uma marca registrada da Innersloth LLC
+        </p>
+    </div>
+
+    <script>
+        // Criar estrelas animadas (otimizado)
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 80; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // Função para copiar texto com feedback visual próximo ao mouse
+        function copyText(text, event) {
+            // Se o evento não for passado explicitamente, tenta pegar o global (fallback antigo)
+            if (!event) event = window.event;
+
+            navigator.clipboard.writeText(text).then(() => {
+                // Criar elemento do toast
+                const toast = document.createElement('div');
+                toast.className = 'copy-toast';
+                toast.textContent = 'Copiado para a área de transferência!';
+
+                // Posicionar próximo ao clique
+                // Usamos clientX/Y para posição fixa na janela
+                const x = event.clientX;
+                const y = event.clientY;
+
+                toast.style.left = (x + 15) + 'px';
+                toast.style.top = (y - 15) + 'px';
+
+                document.body.appendChild(toast);
+
+                // Remover após a animação (2s)
+                setTimeout(() => {
+                    toast.remove();
+                }, 2000);
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
