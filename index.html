@@ -9,11 +9,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Russo+One&display=swap"
         rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* RESET – MANTÉM */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ⬇️ AQUI fica TODO o seu CSS atual */
+/* body, .container, .card, animações, etc */
+
+/* ================================
+   RESPONSIVO PC / CELULAR
+   (COLE NO FINAL)
+   ================================ */
+@media (max-width: 900px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container,
+  main,
+  section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .grid,
+  .cards,
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  button,
+  .btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+  }
+
+  img,
+  svg {
+    max-width: 100%;
+    height: auto;
+  }
+}
+</style>
+
 
         body {
             background: radial-gradient(ellipse at center, #1a0a2e 0%, #0d0015 50%, #000000 100%);
@@ -1994,4 +2051,5 @@
 </body>
 
 </html>
+
 
