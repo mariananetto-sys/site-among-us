@@ -1643,17 +1643,6 @@
                     </div>
                 </div>
 
-                <!-- SENHA -->
-                 <div class="connection-item">
-                    <div class="connection-label">SENHA DA REDE</div>
-                    <div class="connection-value-wrapper">
-                        <div class="connection-value">Amongus</div>
-                        <button class="copy-btn" onclick="copyText('Amongus', event)">
-                            📋 Copiar
-                        </button>
-                    </div>
-                </div>
-
                 <!-- LINHA COMBINADA IP + PORTA -->
                 <div class="connection-row">
                     <!-- IP -->
@@ -1709,7 +1698,12 @@
                     <p class="feature-description">Equipe sempre disponível para ajudar com qualquer problema ou dúvida
                     </p>
                 </div>
-
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3 class="feature-title">Customização Total</h3>
+                    <p class="feature-description">Todas as cores, pets, chapéus e skins do jogo original disponíveis
+                    </p>
+                </div>
                 <div class="feature-card">
                     <div class="feature-icon">🏆</div>
                     <h3 class="feature-title">Sistema de Ranks</h3>
@@ -1877,6 +1871,11 @@
                         <h3 class="credit-name">ElectroThunderBR</h3>
                         <p class="credit-role">Mapa</p>
                     </div>
+                    <div class="credit-card">
+                        <div class="credit-avatar">🎮</div>
+                        <h3 class="credit-name">Cidral</h3>
+                        <p class="credit-role">KITS E COMANDOS</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1950,6 +1949,10 @@
         function copyText(text, event) {
             // Se o evento não for passado explicitamente, tenta pegar o global (fallback antigo)
             if (!event) event = window.event;
+
+            // Alerta de debug para verificar o texto (Remover depois)
+            // alert('Tentando copiar: ' + text);
+            console.log('Copiando:', text); // Log para conferência segura
 
             navigator.clipboard.writeText(text).then(() => {
                 // Criar elemento do toast
